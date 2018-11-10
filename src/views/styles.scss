@@ -1,0 +1,12 @@
+.calculate {
+  font-size: 5rem;
+  text-align: center;
+  font-weight: bold;
+
+  &__input {
+    font-size: 5rem;
+    border: 0;
+    outline: 0;
+    text-align: center;
+  }
+}
