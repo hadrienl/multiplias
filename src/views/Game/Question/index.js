@@ -54,8 +54,8 @@ export class Question extends React.PureComponent {
 
     return (
       <div className="question">
-        <p>
-          {expression} = ?
+        <p className="question__label">
+          {expression}
         </p>
         <NumberInput
           ref={inputRef}
