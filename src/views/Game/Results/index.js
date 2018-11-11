@@ -15,9 +15,26 @@ export class Results extends React.Component {
     return score / questions.length * 100;
   }
 
+  getResultType (score) {
+    if (score > 80) {
+      return 1;
+    }
+    if (score > 50) {
+      return 2;
+    }
+    return 3;
+  }
+
   render () {
+    const { newGame } = this.context;
     const { score } = this;
-    return <p>Ton score est de {score}%</p>
+
+    return (
+      <div>
+        <p>Ton score est de {score}%</p>
+        <button onClick={newGame}>Nouvelle partie ?</button>
+      </div>
+    )
   }
 }
 

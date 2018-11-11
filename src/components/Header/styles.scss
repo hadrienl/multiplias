@@ -1,0 +1,15 @@
+.main-header {
+  display: flex;
+  font-size: 1rem;
+
+  &__title {
+    flex: 1;
+    font-size: 3rem;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__tools {
+    text-align: right;
+  }
+}

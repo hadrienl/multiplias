@@ -42,11 +42,14 @@ export class GameProvider extends React.Component {
     });
   }
 
+  reset = () => this.setState({ ...initialState });
+
   state = {
     ...initialState,
     setNickname: this.setNickname,
     newGame: this.newGame,
     setAnswer: this.setAnswer,
+    reset: this.reset,
   };
 
   componentDidMount() {

@@ -2,10 +2,13 @@ import React from 'react';
 
 import { context } from '../../services/GameProvider';
 
+import Layout from './Layout';
 import Nickname from './Nickname';
 import Configuration from './Configuration';
 import Question from './Question';
 import Results from './Results';
+
+import './styles.scss';
 
 export class Game extends React.Component {
   static contextType = context;
@@ -21,8 +24,8 @@ export class Game extends React.Component {
     const { result } = question;
     const resultLength = `${result}`.length;
 
-    if (answer.length === resultLength) {
-      setAnswer({ question, answer: +answer });
+    if (answer === null || answer.length === resultLength) {
+      setAnswer({ question, answer: answer && +answer });
     }
   }
 
@@ -46,4 +49,4 @@ export class Game extends React.Component {
   }
 }
 
-export default Game;
+export default () => <Layout><Game /></Layout>;

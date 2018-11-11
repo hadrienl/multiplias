@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import Timer from './Timer';
+
 export class Question extends React.PureComponent {
   static propTypes = {
     onChange: PropTypes.func,
@@ -11,6 +13,7 @@ export class Question extends React.PureComponent {
   };
 
   inputRef = React.createRef();
+  timerRef = React.createRef();
 
   state = {
     answer: '',
@@ -29,6 +32,7 @@ export class Question extends React.PureComponent {
     const { question } = this.props;
     if (question !== prevQuestion) {
       this.setState({ answer: '' });
+      this.timerRef.current.reset();
     }
   }
 
@@ -42,10 +46,15 @@ export class Question extends React.PureComponent {
     onChange(answer);
   }
 
+  timeout = () => {
+    const { onChange } = this.props;
+    onChange(null);
+  }
+
   render () {
     const { question: { expression } } = this.props;
     const { answer } = this.state;
-    const { inputRef, setAnswer } = this;
+    const { inputRef, setAnswer, timeout, timerRef } = this;
 
     return (
       <div>
@@ -58,6 +67,11 @@ export class Question extends React.PureComponent {
           className="calculate__input"
           value={answer}
           onChange={setAnswer}
+        />
+        <Timer
+          ref={timerRef}
+          time={15}
+          onTimeout={timeout}
         />
       </div>
     );

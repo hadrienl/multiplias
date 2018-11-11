@@ -1,0 +1,8 @@
+.main-footer {
+  display: flex;
+  flex-direction: row;
+
+  &__main {
+    flex: 1;
+  }
+}
