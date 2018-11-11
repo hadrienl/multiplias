@@ -4,7 +4,10 @@ export const context = React.createContext();
 
 const { Provider } = context;
 
-const MAX_QUESTIONS = 5;
+const DFT_MAX_QUESTIONS = 5;
+const LEVEL_EASY = 'easy';
+const LEVEL_MEDIUM = 'medium';
+const LEVEL_HARD = 'hard';
 
 const initialState = {
   nickname: '',
@@ -15,10 +18,11 @@ const initialState = {
 export class GameProvider extends React.Component {
   setNickname = nickname => this.setState({ nickname });
 
-  newGame = ({ questionsCount = MAX_QUESTIONS } = {}) => {
+  newGame = ({ questionsCount = DFT_MAX_QUESTIONS, level = LEVEL_EASY } = {}) => {
     const questions = [...new Array(questionsCount)].map(() => {
-      const a = parseInt(Math.random() * 10);
-      const b = parseInt(Math.random() * 10);
+      const coef = this.getRandomNumberCoef(level);
+      const a = parseInt(Math.random() * coef[0]);
+      const b = parseInt(Math.random() * coef[1]);
       const expression = `${a} x ${b}`;
       const result = a * b;
       return { expression, result };
@@ -28,6 +32,18 @@ export class GameProvider extends React.Component {
       questions,
       points: 0,
     });
+  }
+
+  getRandomNumberCoef(level) {
+    switch (level) {
+      case LEVEL_MEDIUM:
+        return [10, 100];
+      case LEVEL_HARD:
+        return [100, 100];
+      case LEVEL_EASY:
+      default:
+        return [10, 10];
+    }
   }
 
   setAnswer = ({ question, answer }) => {
