@@ -1,14 +1,16 @@
 import React from 'react';
 
-import Calculate from './views/Calculate';
-
+import GameProvider from './services/GameProvider';
+import Game from './views/Game';
 
 class App extends React.Component {
   render() {
     return (
-      <div className="App">
-        <Calculate />
-      </div>
+      <GameProvider>
+        <div className="App">
+          <Game />
+        </div>
+      </GameProvider>
     );
   }
 }
