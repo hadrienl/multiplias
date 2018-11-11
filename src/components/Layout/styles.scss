@@ -1,13 +1,24 @@
 @import url('https://fonts.googleapis.com/css?family=Gochi+Hand');
+@import './theme';
 
 body {
   padding: 0;
   margin: 0;
+  background-color: $primaryColorVeryDarker;
+  color: $primaryColorVeryLighter;
 }
 
 body, input, button {
   font-size: 62.5%;
   font-family: /*'Gochi Hand', cursive, */sans-serif;
+}
+
+input {
+  background-color: transparent;
+  border: 0;
+  outline: 0;
+  color: $secondaryColorVeryLighter;
+  border-bottom: 1px solid $secondaryColorLighter;
 }
 
 .main-layout {
@@ -21,4 +32,35 @@ body, input, button {
     align-items: center;
     flex-direction: row;
   }
+}
+
+.button-big {
+  background: none;
+  border-radius: .4rem;
+  border: .3rem solid;
+  border-bottom: .8rem solid;
+  border-top: .1rem solid;
+  border-color: $secondaryColorVeryDarker;
+  outline: none;
+  transition: margin .1s ease-in, border .1s ease-in;
+  cursor: pointer;
+
+  color: $tertiaryColor;
+  background: linear-gradient(270deg, $secondaryColorVeryLighter, $secondaryColorDarker);
+  background-size: 400% 400%;
+  &:hover {
+    animation: buttonAnimation 1s ease;
+  }
+
+  &:active {
+    border-bottom: .4rem solid;
+    border-color: $secondaryColorVeryDarker;
+    margin-top: .4rem;
+  }
+}
+
+@keyframes buttonAnimation {
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
 }

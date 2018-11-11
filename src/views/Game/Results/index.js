@@ -32,7 +32,12 @@ export class Results extends React.Component {
     return (
       <div>
         <p>Ton score est de {score}%</p>
-        <button onClick={newGame}>Nouvelle partie ?</button>
+        <button
+          className="button-big"
+          onClick={newGame}
+        >
+          Nouvelle partie ?
+        </button>
       </div>
     )
   }

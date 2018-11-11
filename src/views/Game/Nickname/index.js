@@ -2,6 +2,8 @@ import React from 'react';
 
 import { context } from '../../../services/GameProvider';
 
+import './styles.scss';
+
 export class Nickname extends React.Component {
   static contextType = context;
 
@@ -30,15 +32,26 @@ export class Nickname extends React.Component {
 
     return (
       <form
+        className="nickname"
         onSubmit={submit}>
         <p>Bonjour, quel est ton prénom ?</p>
-        <input
-          type="text"
-          value={nickname}
-          onChange={setNickname}
-          ref={inputRef}
-        />
-        <button type="submit">Démarrer le jeu</button>
+        <p>
+          <input
+            className="nickname__input"
+            type="text"
+            value={nickname}
+            onChange={setNickname}
+            ref={inputRef}
+          />
+        </p>
+        <p>
+          <button
+            type="submit"
+            className="button-big"
+          >
+            Démarrer le jeu
+          </button>
+        </p>
       </form>
     )
   }

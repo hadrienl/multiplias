@@ -19,7 +19,10 @@ export class Header extends React.Component {
         <div className="main-header__tools">
           <div>
             {nickname &&
-              <button onClick={reset}>
+              <button
+                className="button"
+                onClick={reset}
+              >
                 Changer de joueur
               </button>
             }

@@ -21,12 +21,7 @@ export class Game extends React.Component {
   setAnswer = answer => {
     const { setAnswer } = this.context;
     const { currentQuestion: question } = this;
-    const { result } = question;
-    const resultLength = `${result}`.length;
-
-    if (answer === null || answer.length === resultLength) {
-      setAnswer({ question, answer: answer && +answer });
-    }
+    setAnswer({ question, answer: answer && +answer });
   }
 
   render () {

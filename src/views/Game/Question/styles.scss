@@ -1,0 +1,9 @@
+.question {
+  &__input input {
+    border: 0;
+    border-bottom: 1px solid;
+    outline: 0;
+    width: 3rem;
+    margin: 0 .2rem
+  }
+}

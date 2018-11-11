@@ -1,7 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import NumberInput from '../../../components/NumberInput';
 import Timer from './Timer';
+
+import './styles.scss';
 
 export class Question extends React.PureComponent {
   static propTypes = {
@@ -21,11 +24,6 @@ export class Question extends React.PureComponent {
 
   componentDidMount() {
     this.inputRef.current.focus();
-    this.inputRef.current.addEventListener('blur', this._blurListener = e => {
-      if (this.inputRef.current) {
-        this.inputRef.current.focus();
-      }
-    });
   }
   
   componentDidUpdate ({ question: prevQuestion }) {
@@ -36,14 +34,11 @@ export class Question extends React.PureComponent {
     }
   }
 
-  componentWillUnmount () {
-    this.inputRef.current.removeEventListener('blur', this._blurListener);
-  }
-
-  setAnswer = ({ target: { value: answer } }) => {
+  setAnswer = answer => {
     this.setState({ answer });
     const { onChange } = this.props;
     onChange(answer);
+    this.inputRef.current.reset();
   }
 
   timeout = () => {
@@ -52,19 +47,20 @@ export class Question extends React.PureComponent {
   }
 
   render () {
-    const { question: { expression } } = this.props;
+    const { question: { expression, result } } = this.props;
     const { answer } = this.state;
     const { inputRef, setAnswer, timeout, timerRef } = this;
+    const length = `${result}`.length;
 
     return (
-      <div>
+      <div className="question">
         <p>
           {expression} = ?
         </p>
-        <input
-          type="number"
+        <NumberInput
           ref={inputRef}
-          className="calculate__input"
+          className="question__input"
+          length={length}
           value={answer}
           onChange={setAnswer}
         />
