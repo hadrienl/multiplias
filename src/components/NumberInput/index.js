@@ -97,6 +97,7 @@ export class NumberInput extends React.Component {
           <input
             key={k}
             type="number"
+            pattern="\d*"
             value={`${value||''}`}
             onKeyDown={onKeyDown}
             onBlur={onBlur}
