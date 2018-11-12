@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import './styles.scss';
+
 export class NumberInput extends React.Component {
   static propTypes = {
     length: PropTypes.number.isRequired,
@@ -94,6 +96,7 @@ export class NumberInput extends React.Component {
         {digits.map((value, k) => (
           <input
             key={k}
+            type="number"
             value={`${value||''}`}
             onKeyDown={onKeyDown}
             onBlur={onBlur}
